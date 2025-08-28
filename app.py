@@ -1,16 +1,4 @@
-import streamlit as st
-import plotly.express as px
-
-# Configuración de la página
-st.set_page_config(page_title="🌍 Dashboard Demo", layout="wide")
-
-st.title("🌍 Dashboard con tooltip personalizado")
-
-# Datos de ejemplo
-df = px.data.gapminder().query("year == 2007")
-df_filtrado = df[df["continent"] == "Americas"]
-
-# Crear gráfico
+# ... tu código para crear df_filtrado y la figura ...
 fig = px.scatter(
     df_filtrado,
     x="gdpPercap",
@@ -19,36 +7,45 @@ fig = px.scatter(
     color="country"
 )
 
-# Tooltip en español y bordes redondeados
+# Tooltip en español y sin info extra (cuadro <extra> oculto)
 fig.update_traces(
-    hovertemplate="<b>País:</b> %{customdata[0]}<br>" +
-                  "<b>PIB per cápita:</b> %{x}<br>" +
-                  "<b>Esperanza de vida:</b> %{y}<br>" +
-                  "<b>Población:</b> %{marker.size}<extra></extra>",
+    hovertemplate=(
+        "<b>%{customdata[0]}</b><br>"
+        "PIB per cápita: %{x:,.0f}<br>"
+        "Esperanza de vida: %{y:.1f}<br>"
+        "Población: %{marker.size:,}"
+        "<extra></extra>"
+    ),
     customdata=df_filtrado[["country"]]
 )
 
-# Personalización del estilo del tooltip
+# Estilo base del tooltip (fondo claro, borde neutro, texto oscuro)
 fig.update_layout(
     hoverlabel=dict(
-        bgcolor="rgba(30,30,40,0.9)",   # Fondo oscuro semitransparente
-        font_size=13,
-        font_color="white",
-        bordercolor="#00f5d4",          # Borde neón tech
+        bgcolor="rgba(255,255,255,0.98)",
+        bordercolor="#e5e7eb",
+        font_color="#111111",
+        font_size=13
     )
 )
 
-# ⚠️ Hack para bordes redondeados (Plotly no lo soporta directamente)
-# Usamos CSS inyectado a través de Streamlit
+# CSS para esquinas redondeadas (y mantenerlo limpio)
 st.markdown("""
-    <style>
-    .hoverlayer .hovertext {
-        border-radius: 12px !important;
-        padding: 8px !important;
-    }
-    </style>
+<style>
+/* Fondo claro + borde sutil + esquinas redondeadas del tooltip */
+.hoverlayer .hovertext .bg {
+    fill: #ffffff !important;      /* fondo claro */
+    stroke: #e5e7eb !important;    /* sin celeste: gris muy sutil */
+    stroke-width: 1 !important;
+    rx: 10;
+    ry: 10;
+}
+/* Texto del tooltip en color oscuro */
+.hoverlayer .hovertext text {
+    fill: #111111 !important;
+}
+</style>
 """, unsafe_allow_html=True)
 
-# Mostrar gráfico
 st.plotly_chart(fig, use_container_width=True)
 
