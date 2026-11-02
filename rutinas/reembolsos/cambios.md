@@ -8,6 +8,17 @@ Ya hecho aparte (autorizado): se agregó "Seguimiento interno con David" en `Lis
 - La Fase B revisa TODOS los casos abiertos con la cola de prioridad, no solo "Analizando el proveedor".
 - AO queda vacío cuando la pelota no está en la casilla, con dos excepciones: proveedor externo con 7 o más días hábiles sin respuesta, y cliente con 5 o más días hábiles sin responder un pedido de documentos.
 
+## Ajuste 2 (pedido de Fabiana): los comentarios del equipo avanzan la etapa
+- El Paso 4d corre al inicio de la Fase A, antes de procesar los correos. Así, "Respuesta recomendada enviada" se interpreta con el AO que Fabiana vio y envió.
+- **Cambia la regla anterior.** Un comentario de evento basta por sí solo para avanzar la etapa. El correo en "Elementos enviados" ya no es un requisito: si aparece, la confianza queda "Alta" y J toma su fecha; si no aparece, la etapa avanza igual con confianza "Media" y queda marcada como "(por comentario, sin correo)" en el resumen. La etapa solo NO avanza si el correo contradice el comentario (es un borrador, rebotó o es de otro caso) o si el comentario es una duda.
+- "Respuesta recomendada enviada" se traduce en una etapa según lo que decía AO: pedido de documentos → Documentos solicitados; expediente al proveedor → Analizando el proveedor; aprobación comunicada → Resultado comunicado; rechazo comunicado → cierre. Regla mínima: si la fila estaba en "Sin gestionar" y el equipo respondió, pasa como mínimo a "Documentos solicitados".
+- Se reconocen más frases: "respondí", "contesté", "gestionado", "comuniqué el resultado", "pagado".
+- Si hay más de 9 filas con comentario, las búsquedas se hacen con subagentes, igual que en la Fase B.
+
+## Ajuste 3: la rutina ya no deshace ediciones del equipo
+- El paso de verificación ya no restaura "diferencias no planificadas", porque podían ser comentarios o etapas que el equipo escribió mientras corría la rutina. Solo restaura una celda que la propia rutina escribió por error (por ejemplo, en una fila equivocada).
+- Antes de escribir, la rutina relee la fila. Si el equipo cambió una celda durante la corrida, la rutina respeta ese valor y no la sobrescribe.
+
 ## Qué cambió
 
 ### 1. Avance de etapa con evidencia
