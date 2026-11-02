@@ -82,7 +82,7 @@ Regla AJ = I: al terminar la corrida, en toda fila que escribas AJ (etapa sugeri
 - Borrador desactualizado: si en esta corrida cambias AO de una fila cuyo AR empieza con "Borrador creado", el borrador ya no corresponde al estado del caso: escribe también AR = "Obsoleto dd/mm/aaaa" (hoy) y anótalo en la sección de borradores del resumen. No toques AR si empieza con otro valor.
 
 ## Rebotes
-Para cada rebote que encuentres en los correos de un caso (ver "Personas y dominios"), identifica el envío original de la casilla (asunto después de "No se puede entregar:"/"Undeliverable:", destinatario que falló y fecha) y su fila .
+Para cada rebote que encuentres en los correos de un caso (ver "Personas y dominios"), identifica el envío original de la casilla (asunto después de "No se puede entregar:"/"Undeliverable:", destinatario que falló y fecha) y su fila.
 - Si el envío original fue a un destino de evaluación: ese envío queda INVALIDADO. No cuenta para W ni como evento de etapa 3. Si la fila ya estaba en "Analizando el proveedor" solo por ese envío, no la avances; si estaba en una etapa anterior, no avanza. AJ = la etapa que corresponde sin ese envío; N = "Responder / reenviar al proveedor"; AK con "Rebote dd/mm del envío a <proveedor>; reenviar" y, si AJ ≠ I, la nota "AJ≠I: rebote del envío al proveedor"; AO = reenvío al proveedor (ver "Reglas de AO"). Esta fila escribe N aunque AL no sea "Alta".
 - Si el envío original fue al cliente: anótalo en AK ("Rebote dd/mm del correo al cliente; verificar dirección") y en "Para revisar" del resumen; no cambies la etapa.
 - Si hay un envío posterior exitoso al mismo destinatario (sin rebote), el rebote ya está resuelto: ignóralo.

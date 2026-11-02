@@ -1,6 +1,8 @@
 # Cambios a las rutinas de seguimiento de reembolsos
 
-Estado: PROPUESTA, todavía no aplicada.
+Estado: APLICADO el 02/11/2026.
+- Rutina principal (trig_018MKKEyJENKXzoYEDG5xeqb): prompt reemplazado por `prompt_rutina_A.md`; horario y conectores sin cambios.
+- Rutina manual (trig_0171AF4dqUKptwX9aS1GdU6q): creada con `prompt_revision_cola.md`, sin horario. PENDIENTE: agregarle los conectores Microsoft 365 y Google Sheets desde la interfaz de rutinas de claude.ai, porque la herramienta no permitió asignarlos al crearla.
 - `prompt_rutina_A.md` reemplaza el prompt de la rutina programada existente "Actualizar seguimiento reembolsos" (trig_018MKKEyJENKXzoYEDG5xeqb). Mantiene su horario: 9, 13, 17 y 22 h de París, de lunes a viernes.
 - `prompt_revision_cola.md` es una rutina NUEVA, "Revisión manual de cola reembolsos". No tiene horario, solo se lanza a mano, y usa los mismos conectores (Microsoft 365 y Google Sheets).
 - Ya aplicado aparte (autorizado): se agregó "Seguimiento interno con David" en `Listas!C17`.
